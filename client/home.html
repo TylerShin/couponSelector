@@ -1,0 +1,62 @@
+<head>
+  <title>쿠폰 제비뽑기</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+  <!-- Header -->
+  <div class="container">
+    <div class="header text-center">
+      <h2>Vingle 쿠폰뽑기 게임입니다 :)</h2>
+    </div>
+    <!-- Form part -->
+    <form name="gameInfoForm">
+      <div class="form-group">
+        <label>인원 추가</label>
+        <div class="input-group">
+          <input type="text" name="username" class="form-control" placeholder="추가할 참가자의 이름을 입력하세요">
+          <span class="input-group-btn">
+            <button type="button" name="nameBtn" class="btn btn-primary">추가</button>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>당첨인원</label>
+        <select class="form-control" name="winnerNum">
+          {{#each people}}
+            <option value='{{getRealNumber @index}}'>{{getRealNumber @index}} 명</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <input type="button" class="btn btn-danger form-control" name="submitBtn" value="게임 시작">
+      </div>
+    </form>
+    <!-- name-list-part -->
+    <div class="name-list-box">
+      <ul class="list-group name-list">
+        <li class="list-group-item list-group-item-warning">참여 인원 명단</li>
+        {{#each people}}
+          <li class="list-group-item">{{this}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <!-- timer part -->
+    {{#if progress}}
+      <div class="timer">
+        {{> circularProgress}}
+      </div>
+    {{/if}}
+    <!-- result part -->
+    <div class="result-box">
+        {{#if result}}
+          <h2>축하합니다!</h2>
+          {{#each winner}}
+            {{this}}
+          {{/each}}
+          <h3>님이 당첨되셨습니다.</h3>
+        {{else}}
+          <h2>게임 준비 중!</h2>
+        {{/if}}
+    </div>
+  </div>
+</body>

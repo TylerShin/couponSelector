@@ -1,0 +1,21 @@
+.header {
+  margin: 50px 0;
+}
+
+.name-list-box {
+  margin-top: 40px;
+}
+.list-group-item {
+  text-align: center;
+  font-weight: 700;
+}
+.result-box {
+  text-align: center;
+}
+.timer {
+  margin: 40px auto;
+}
+#svg-progress-container {
+  width: 300px;
+  margin: 0 auto;
+}
