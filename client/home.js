@@ -53,13 +53,15 @@ Template.body.events({
       });
     } else {
       var winners = [];
+      var nowLength = 0;
       do {
-        var winner = people[_.random(0, high)];
+        var winner = people[Math.floor(Math.random() * high)];
         if(!_.contains(winners, winner)) {
           winners.push(winner);
         }
+        nowLength = winners.length;
       }
-      while (winners.length <= winnerNum);
+      while (nowLength < winnerNum);
       tmpl.store.set({
         people,
         winner: [...winners],
@@ -72,17 +74,6 @@ Template.body.events({
 Template.registerHelper('getRealNumber', function(number) {
   return number + 1;
 });
-
-
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
 
 // Idea Note
 // 미리 개똥이 소똥이 같은 예시 이름 Array를 만들어놓고 빠른 참가를 누를 경우 그 중에서 랜덤으로
