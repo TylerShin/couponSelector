@@ -23,7 +23,7 @@ Template.body.helpers({
 });
 
 Template.body.events({
-  'click [name=nameBtn]': (e, tmpl) => {
+  'submit [name=nameInputs]': (e, tmpl) => {
     e.preventDefault();
     let username = tmpl.find('[name=username]').value;
     if(username === '') {
